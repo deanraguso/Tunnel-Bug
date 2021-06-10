@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height:100vh">
   <head>
     <title>TunnelBug</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,11 +7,32 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'  %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class='container-fluid h-100 d-flex flex-column m-0 p-0'>
+  
     <%= render "layouts/nav_bar" %>
-    <%= yield %>
+
+    <% if current_user %>
+      <div class="row h-100 w-100 p-0 m-0">
+        <div class="container col-12 col-sm-3 col-md-2 bg-dark p-0 m-0">
+
+          <%= render 'layouts/side_panel' %>
+
+        </div>
+        <div class="container col-12 col-sm-9 col-md-10 h-100 bg-light">
+          <%= yield %>
+        </div>
+      </div>
+    <% else %>
+      <div class="row h-100 w-100 p-0 m-0">
+        <div class="container col-12 col-sm-9 col-md-10 bg-light text-center pt-3">
+          <%= yield %>
+        </div>
+      </div>
+    <% end %>
+    
   </body>
 </html>
