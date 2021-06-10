@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_10_014011) do
+ActiveRecord::Schema.define(version: 2021_06_10_053433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,30 @@ ActiveRecord::Schema.define(version: 2021_06_10_014011) do
     t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
+  create_table "ticket_changes", force: :cascade do |t|
+    t.string "comment", null: false
+    t.bigint "user_id", null: false
+    t.bigint "ticket_id", null: false
+    t.string "priority_change", default: ""
+    t.string "status_change", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ticket_id"], name: "index_ticket_changes_on_ticket_id"
+    t.index ["user_id"], name: "index_ticket_changes_on_user_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.string "priority"
+    t.text "description"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_tickets_on_project_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -45,4 +69,8 @@ ActiveRecord::Schema.define(version: 2021_06_10_014011) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "ticket_changes", "tickets"
+  add_foreign_key "ticket_changes", "users"
+  add_foreign_key "tickets", "projects"
+  add_foreign_key "tickets", "users"
 end

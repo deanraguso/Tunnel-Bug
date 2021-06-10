@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :unauthorized_redirect
 
   # GET /projects or /projects.json
   def index
@@ -25,6 +26,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+        @project.roles.create(role: "admin", user_id: current_user.id);
         format.html { redirect_to @project, notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else
@@ -65,5 +67,11 @@ class ProjectsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def project_params
       params.require(:project).permit(:name, :status)
+    end
+
+    def unauthorized_redirect
+      unless current_user
+        redirect_to root_path, notice: "You must be logged in to access projects!"
+      end
     end
 end

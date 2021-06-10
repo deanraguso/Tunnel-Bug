@@ -6,5 +6,7 @@ class User < ApplicationRecord
   
   validates :name, presence: true
   has_many :roles
+  has_many :tickets
+  has_many :ticket_changes
   has_many :projects, through: :roles
 end
