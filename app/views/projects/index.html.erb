@@ -1,29 +1,21 @@
+
+
+<h1 class="text-center display-1">Projects</h1>
+<%= link_to 'New Project', new_project_path, class: "btn btn-success mx-2" %>
 <p id="notice"><%= notice %></p>
+<div class="d-flex flex-wrap">
 
-<h1>Projects</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.status %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Project', new_project_path %>
+  <% @projects.each do |project| %>
+    <div class="card m-2" style="min-width: 200px; width: 15%">
+      <div class="card-header bg-dark text-white">
+        <%= project.name %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Status: <%= project.status %></h5>
+        <p class="card-text">Role: <%= project.roles.find_by(user_id: current_user.id).role %></p>
+        <p class="card-text">Tickets: <%= project.tickets.count %>  </p>
+        <%= link_to "", project, class: "stretched-link" %>
+      </div>
+    </div>
+  <% end %>
+</div>

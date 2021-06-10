@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-    has_many :roles
-    has_many :tickets
+    has_many :roles, dependent: :destroy
+    has_many :tickets, dependent: :destroy
     has_many :users, through: :roles
 end
