@@ -1,10 +1,10 @@
 <div class="h-100 w-100 m-0 p-0 vertical-center d-flex flex-column">
-    <div class="container bg-dark p-1 m-0 w-100 text-center text-light">  
+    <div class="container bg-dark p-0 m-0 w-100 text-center text-light">  
         <h6>Project</h6>
-        <%= link_to "Project Dashboard", projects_path, class:"text-white btn btn-secondary mb-3" %>
+        <%= link_to "All Projects", projects_path, class:"text-white btn btn-secondary mb-3 w-100 rounded-0" %>
 
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle mb-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle mb-2 w-100 rounded-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 My Projects
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -15,9 +15,9 @@
         </div>
 
         <h6>Ticket</h6>
-        <%= link_to "Ticket Dashboard", tickets_path, class:"text-white btn btn-secondary mb-3" %>
+        <%= link_to "Ticket Dashboard", tickets_path, class:"text-white btn btn-secondary mb-2 w-100 rounded-0" %>
 
         <h6>Account</h6>
-        <%= link_to "Edit Account", edit_user_registration_path, class:"text-white btn btn-secondary mb-3" %>
+        <%= link_to "Edit Account", edit_user_registration_path, class:"text-white btn btn-secondary mb-0 w-100 rounded-0" %>
     </div>
 </div>

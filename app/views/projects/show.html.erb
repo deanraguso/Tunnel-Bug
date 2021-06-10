@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="container d-flex flex-wrap p-0 m-0 h-100">
+  <div class="container smart-container m-3 p-0 bg-secondary" style="max-width: 46%; max-height: 46%">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @project.name %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @project.status %>
-</p>
+    <p>
+      <strong>Status:</strong>
+      <%= @project.status %>
+    </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+    <%= link_to 'Edit', edit_project_path(@project) %> |
+    <%= link_to 'Back', projects_path %>
+  </div>
+  <div class="container smart-container m-3 p-0 bg-dark" style="width: 46%; height: 46%">
+  </div>
+  <div class="container smart-container m-3 p-0 bg-dark" style="width: 46%; height: 46%">
+  </div>
+  <div class="container smart-container m-3 p-0 bg-secondary" style="width: 46%; height: 46%">
+  </div>
+</div>
+
+

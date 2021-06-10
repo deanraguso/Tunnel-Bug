@@ -1,0 +1,12 @@
+
+div.smart-container {
+    width: 100%;
+    height: 44%;
+}
+
+@media only screen and (min-width: 1000px) {
+    div.smart-container {
+        max-width: 46%;
+    }
+    
+}
