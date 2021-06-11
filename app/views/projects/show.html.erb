@@ -1,5 +1,5 @@
-<div class="container d-flex flex-wrap p-0 m-0 h-100">
-  <div class="container smart-container m-3 p-0 bg-secondary" style="max-width: 46%; max-height: 46%">
+<div class="container-fluid d-flex flex-wrap p-0 m-0 w-100 h-100 justify-content-center">
+  <div class="container smart-container m-3 p-1 bg-dark text-white rounded-3">
     <p id="notice"><%= notice %></p>
 
     <p>
@@ -12,15 +12,38 @@
       <%= @project.status %>
     </p>
 
+    <% @project.tickets.each do |t| %>
+      <p><%= t.description %></p>
+    <% end %>
+
     <%= link_to 'Edit', edit_project_path(@project) %> |
     <%= link_to 'Back', projects_path %>
   </div>
-  <div class="container smart-container m-3 p-0 bg-dark" style="width: 46%; height: 46%">
+  <div class="container smart-container m-3 p-1 bg-secondary rounded-3">
+
   </div>
-  <div class="container smart-container m-3 p-0 bg-dark" style="width: 46%; height: 46%">
-  </div>
-  <div class="container smart-container m-3 p-0 bg-secondary" style="width: 46%; height: 46%">
+  <div class="container smart-wide m-3 p-1 p-1 bg-secondary rounded-3">
+    <h3 class="display-3">Tickets</h3>
+    <div class="container d-flex flex-wrap">
+      <% @project.tickets.each.with_index do |t, index| %>
+        <div class="row line container w-100 mb-1 py-2 <%= index % 2 == 0 ? "bg-light" : ""%>">
+          <div class="col-sm-4">
+            <p><%= t.description %></p>
+          </div>
+          <div class="col-sm-2">
+            <p>Status: <%= t.status %></p>
+          </div>
+          <div class="col-sm-2">
+            <p>Priority: <%= t.priority %></p>
+          </div>
+          <div class="col-sm-2">
+            <p>Created by: <%= t.user.name %></p>
+          </div>
+          <div class="col-sm-2 p-0">
+            <%= link_to "View Ticket", t, class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
-

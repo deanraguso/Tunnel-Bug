@@ -1,8 +1,15 @@
 
+div.smart-wide {
+    width: 98%;
+    height: 40%;
+    overflow-y: scroll;
+}
+
 div.smart-container {
     width: 100%;
     height: 44%;
 }
+
 
 @media only screen and (min-width: 1000px) {
     div.smart-container {

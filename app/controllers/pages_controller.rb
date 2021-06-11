@@ -2,6 +2,9 @@ class PagesController < ApplicationController
   before_action :unauthorized_redirect, only: [:dashboard]
 
   def index
+    if current_user 
+      redirect_to dashboard_path
+    end
   end
 
   def dashboard

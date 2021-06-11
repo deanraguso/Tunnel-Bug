@@ -1,13 +1,15 @@
 <div class="container-fluid d-flex flex-wrap p-0 m-0 w-100 h-100 justify-content-center">
-  <div class="container smart-container m-3 p-0 bg-secondary">
+  <div class="container smart-container m-3 p-3 bg-secondary rounded-3">
+    <h1 class="display-1"><%= current_user.name %></h1>
+    <h4><%= current_user.email %></h4>
+    <h2>Participating in <%= current_user.projects.count %> projects</h2>
+    <h3>Created <strong>tunnelBug</strong> account <%= distance_of_time_in_words_to_now current_user.created_at %> ago.</h3>
   </div>
-  <div class="container smart-container m-3 p-0 bg-dark">
+  <div class="container smart-container m-3 p-0 bg-dark rounded-3">
+    <h2 class="display-2">
   </div>
-  <div class="container smart-container m-3 p-0 bg-dark">
+  <div class="container smart-container m-3 p-0 bg-dark rounded-3">
   </div>
-  <div class="container smart-container m-3 p-0 bg-secondary">
+  <div class="container smart-container m-3 p-0 bg-secondary rounded-3">
   </div>
 </div>
-
-
-<%= stylesheet_pack_tag 'pages', media: 'all', 'data-turbolinks-track': 'reload'  %>
