@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        @project.roles.create(role: "admin", user_id: current_user.id);
+        @project.roles.create(role: "Project Manager", user_id: current_user.id);
         format.html { redirect_to @project, notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else
